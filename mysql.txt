@@ -1,0 +1,3 @@
+create table game(gameId varchar(10), pictureURI varchar(10000));
+
+create table player1(pictureURI varchar(3000));
