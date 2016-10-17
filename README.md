@@ -2,6 +2,6 @@
 
 CS491project. Sponsor: Dr. Geller.
 
-mainMenu --> referee --> refereeGame 
+<p>mainMenu --> referee --> refereeGame 
         |
-         --> player1 --> player1Game
+         --> player1 --> player1Game</p>
