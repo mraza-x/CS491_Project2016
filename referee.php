@@ -29,7 +29,7 @@
 <html>
   <head>
     <link rel='stylesheet' href='style.css'>
-    <h1>Referee Screen</h1>
+    <h1>Create New Game</h1>
     <script src='processing.js'></script>
     <script type='application/processing' data-processing-target='refCanvas'>
       <?php echo $userInput; ?>
@@ -114,11 +114,13 @@
     <div class='refereeUI'>
       <form action='processImage.php' method='post' id='refForm'>
         <p>Write code here to create the master image</p>
-        <textarea rows='20' cols='50' name='userInput' id='textArea'><?php echo $userInput; ?></textarea>
+        <textarea rows='20' cols='50' name='userInput' id='textArea' required><?php echo $userInput; ?></textarea>
         <p>This button redraws the image. </p>
         <input type='button' value='Redraw' onclick='redrawSubmit()'>
+        <p>How many players?</p>
+        <input type='text' name='playerCount' id='playerCount' required>
         <p>Name the game sesssion and submit.</p>
-        <input type='text' name='gameId' id='gameId'>
+        <input type='text' name='gameId' id='gameId' required>
         <input type='checkbox' name='get' value=1 hidden checked>
         <input type='submit' value='Submit'>
       </form>

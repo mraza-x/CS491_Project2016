@@ -3,13 +3,13 @@
   
   $userInput = $_POST['userInput'];
   $gameId = $_POST['gameId'];
+  $playerCount = $_POST['playerCount'];
   $get = $_POST['get'];
 ?>
 
 <html>
   <head>
-    <h3>The image has been processed.</h3>
-    <h3>Game session: <?php echo $gameId; ?></h3>
+    <h3>Processing...</h3>
     <script src="resemble/resemble.js"></script>
     <script src='processing.js'></script>
     <script type='application/processing' data-processing-target='refCanvas'>
@@ -22,6 +22,7 @@
       var canvasData; 
       var get = <?php echo $get; ?>;
       var gameId = <?php echo "\"".$gameId."\""; ?>;
+      var playerCount = <?php echo $playerCount; ?>;
     
       var canvas = document.getElementById('refCanvas');
         
@@ -31,7 +32,7 @@
         
         var processImage_http = new XMLHttpRequest();
         var url = "database.php";
-        var params = "gameId=" + gameId + "&pictureURI=" + encodeURIComponent(canvasData) + "&get=" + get;
+        var params = "gameId=" + gameId + "&pictureURI=" + encodeURIComponent(canvasData) + "&playerCount=" + playerCount + "&get=" + get;
 
         processImage_http.open("POST", url, true);
         processImage_http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -43,6 +44,12 @@
         }
         
         processImage_http.send(params);
+        
+        if(get == 1){
+           var refereeGameForm = document.getElementById('refereeGame');
+           
+           refereeGameForm.submit();
+        }
         
         if(get == 3){
           var form = document.getElementById('playerResults');
@@ -79,6 +86,12 @@
       <input type='text' name='masterImage' id='masterImage' hidden>
       <input type='text' name='userImage' id='userImage' hidden>
       <input type='text' name='diffImage' id='diffImage' hidden>
+    </form>
+    
+    <form method='post' action='refereeGame.php' id='refereeGame'>
+      <input type='text' name='userInput' id='userInput' <?php echo "value = '".$userInput."'"; ?> hidden>
+      <input type='text' name='gameId' id='gameId' <?php echo "value = '".$gameId."'"; ?> hidden>
+      <input type='text' name='playerCount' id='playerCount' <?php echo "value = '".$playerCount."'"; ?> hidden>
     </form>
   </body>
 </html>

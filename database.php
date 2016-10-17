@@ -5,6 +5,7 @@
   $db = "edm8";
   $gameId = $_POST['gameId'];
   $pictureURI = $_POST['pictureURI'];
+  $playerCount = $_POST['playerCount'];
   $get = $_POST['get'];
   
   //echo $gameId . " and " . $pictureURI;
@@ -20,7 +21,7 @@
 
   /***** Inserts referee's image. *****/
   if($get == 1){
-    $sql = "INSERT INTO game VALUES('".$gameId."','".$pictureURI."')";
+    $sql = "INSERT INTO game VALUES('".$gameId."', '".$playerCount."', '".$pictureURI."')";
     $result = $conn->query($sql);
   }
   /***** Retrieves referee image. *****/

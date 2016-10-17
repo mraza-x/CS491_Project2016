@@ -35,7 +35,7 @@
   <body>
     <form action='player1Game.php' method='post' id='player1Game.php'>
       <p>The player writes code to this box.</p>
-      <textarea rows='20' cols='50' name='userCode' id='textArea'></textarea>
+      <textarea rows='20' cols='50' name='userCode' id='textArea'><?php echo $userCode; ?></textarea>
       <input type='text' name='pictureURI' <?php echo "value='".$pictureURI."'"; ?> hidden>
       <p>This button is to redraw image.</p>
       <input type='submit' value='Redraw'>
